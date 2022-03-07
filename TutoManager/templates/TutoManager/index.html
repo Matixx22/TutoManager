@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="list-group">
+        {% if entry_list %}
+        <ul class="list-unstyled">
+            {% for entry in entry_list %}
+            <a class="list-group-item list-group-item-action" href="{% url 'TutoManager:edit' entry.id %}">{{
+                forloop.counter }}. {{ entry }}</a>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No entries are available.</p>
+        {% endif %}
+    </div>
+    <a class="btn btn-primary" href="{% url 'TutoManager:add' %}" role="button">Add entry</a>
+
+    <h2 class="display-3" id="sum">Sum is: {{sum}} PLN</h2>
+</div>
+{% endblock %}
